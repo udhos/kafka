@@ -11,8 +11,15 @@ import (
 )
 
 func main() {
+	dialer := &kafka.Dialer{
+		Timeout:   10 * time.Second,
+		DualStack: true,
+		//TLS:       &tls.Config{},
+	}
+
 	// make a new reader that consumes from topic-A, partition 0, at offset 42
 	r := kafka.NewReader(kafka.ReaderConfig{
+		Dialer:         dialer,
 		Brokers:        []string{"localhost:9092", "localhost:9093", "localhost:9094"},
 		Topic:          "quickstart-events",
 		Partition:      0,
