@@ -18,7 +18,7 @@ func main() {
 		MaxBytes:  10e6, // 10MB
 		GroupID:   "consumer-group-id",
 	})
-	r.SetOffset(42)
+	//r.SetOffset(42)
 
 	ctx := context.Background()
 	for {

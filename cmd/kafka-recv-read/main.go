@@ -17,7 +17,7 @@ func main() {
 		Partition: 0,
 		MaxBytes:  10e6, // 10MB
 	})
-	r.SetOffset(42)
+	//r.SetOffset(42)
 
 	for {
 		m, err := r.ReadMessage(context.Background())

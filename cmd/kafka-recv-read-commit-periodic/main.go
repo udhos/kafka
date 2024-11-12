@@ -19,15 +19,15 @@ func main() {
 
 	// make a new reader that consumes from topic-A, partition 0, at offset 42
 	r := kafka.NewReader(kafka.ReaderConfig{
-		Dialer:         dialer,
-		Brokers:        []string{"localhost:9092", "localhost:9093", "localhost:9094"},
-		Topic:          "quickstart-events",
-		Partition:      0,
-		MaxBytes:       10e6, // 10MB
-		GroupID:        "consumer-group-id",
+		Dialer:    dialer,
+		Brokers:   []string{"localhost:9092", "localhost:9093", "localhost:9094"},
+		Topic:     "quickstart-events",
+		Partition: 0,
+		MaxBytes:  10e6, // 10MB
+		//GroupID:        "consumer-group-id",
 		CommitInterval: time.Second, // flushes commits to Kafka every second
 	})
-	r.SetOffset(42)
+	r.SetOffset(kafka.LastOffset)
 
 	ctx := context.Background()
 	for {
